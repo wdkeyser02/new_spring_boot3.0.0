@@ -11,12 +11,12 @@ public class SecurityConfigOld2 {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
 		return http
-				.authorizeRequests(
-						auth -> auth
-						.requestMatchers("/tokenbybody").permitAll()
-						.requestMatchers("/user").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-						.requestMatchers("/admin").hasAuthority("ROLE_ADMIN")
-						.anyRequest().authenticated())
+				//.authorizeRequests(
+				//		auth -> auth
+				//		.requestMatchers("/tokenbybody").permitAll()
+				//		.requestMatchers("/user").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+				//		.requestMatchers("/admin").hasAuthority("ROLE_ADMIN")
+				//		.anyRequest().authenticated())
 				.httpBasic(Customizer.withDefaults())
 				.formLogin(Customizer.withDefaults())
 				.build();
