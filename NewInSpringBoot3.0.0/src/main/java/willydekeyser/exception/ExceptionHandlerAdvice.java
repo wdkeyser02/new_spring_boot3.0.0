@@ -17,4 +17,12 @@ public class ExceptionHandlerAdvice {
 		problemDetail.setProperty("User id", ex.getId());
 		return problemDetail;
 	}
+	
+	@ExceptionHandler(Exception.class)
+	public ProblemDetail handleException(Exception ex) {
+		ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+				HttpStatus.NOT_FOUND, 
+				ex.getMessage());
+		return problemDetail;
+	}
 }
