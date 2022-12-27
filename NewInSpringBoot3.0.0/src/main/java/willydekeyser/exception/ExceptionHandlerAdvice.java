@@ -18,8 +18,8 @@ public class ExceptionHandlerAdvice {
 		return problemDetail;
 	}
 	
-	@ExceptionHandler(Exception.class)
-	public ProblemDetail handleException(Exception ex) {
+	@ExceptionHandler(TodoClientException.class)
+	public ProblemDetail handleException(TodoClientException ex) {
 		ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
 				HttpStatus.NOT_FOUND, 
 				ex.getMessage());
