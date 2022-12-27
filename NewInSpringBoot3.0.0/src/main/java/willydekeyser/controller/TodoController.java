@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import willydekeyser.config.TodoClient;
+import willydekeyser.exception.TodoClientException;
 import willydekeyser.model.Todo;
 
 @RestController()
@@ -23,7 +24,11 @@ public class TodoController {
 	}
 	
 	@GetMapping("/todo/{id}")
-	public Todo getTodo(@PathVariable("id") Integer id) {
-		return todoClient.getTodo(id);
+	public Todo getTodo(@PathVariable("id") Integer id) throws TodoClientException {
+		try {
+			return todoClient.getTodo(id);
+		} catch (Exception e) {
+			throw new TodoClientException(id);
+		}
 	}
 }

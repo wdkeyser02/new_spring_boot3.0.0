@@ -6,13 +6,11 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.support.WebClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
-import willydekeyser.exception.TodoClientException;
-
 @Configuration
 public class TodoConfiguration {
 
 	@Bean
-	public TodoClient todoClient() throws TodoClientException {
+	public TodoClient todoClient() throws Exception {
 		return httpServiceProxyFactory().createClient(TodoClient.class);
 	}
 	

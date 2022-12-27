@@ -23,6 +23,7 @@ public class ExceptionHandlerAdvice {
 		ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
 				HttpStatus.NOT_FOUND, 
 				ex.getMessage());
+		problemDetail.setProperty("User id", ex.getId());
 		return problemDetail;
 	}
 }
